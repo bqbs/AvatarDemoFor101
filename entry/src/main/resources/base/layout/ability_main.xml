@@ -9,7 +9,7 @@
     <Text
         ohos:id="$+id:text_helloworld"
         ohos:height="match_content"
-        ohos:width="match_content"
+        ohos:width="match_parent"
         ohos:multiple_lines="true"
         ohos:text_alignment="center"
         ohos:background_element="$graphic:background_ability_main"
@@ -21,6 +21,16 @@
         ohos:id="$+id:img_avatar"
         ohos:height="match_content"
         ohos:width="match_content"
+        ohos:scale_mode="center"
+        ohos:layout_alignment="center"
         ohos:image_src="$media:avatar"/>
+
+    <Button
+        ohos:id="$+id:btn_more"
+        ohos:height="match_content"
+        ohos:width="match_parent"
+        ohos:clickable="true"
+        ohos:text_size="30vp"
+        ohos:text="More"/>
 
 </DirectionalLayout>

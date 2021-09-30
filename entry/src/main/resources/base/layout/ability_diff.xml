@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<DirectionalLayout
+    xmlns:ohos="http://schemas.huawei.com/res/ohos"
+    ohos:height="match_parent"
+    ohos:width="match_parent"
+    ohos:alignment="center"
+    ohos:orientation="vertical">
+
+    <Text
+        ohos:height="match_content"
+        ohos:width="match_content"
+        ohos:text="TileMode 的区别"
+        ohos:text_size="20vp"/>
+
+    <Image
+        ohos:id="$+id:img_ame"
+        ohos:height="150vp"
+        ohos:width="match_content"
+        ohos:image_src="$media:ame"/>
+
+    <Image
+        ohos:id="$+id:img_ame1"
+        ohos:height="150vp"
+        ohos:width="match_content"
+        ohos:image_src="$media:ame" />
+
+    <Image
+        ohos:id="$+id:img_ame2"
+        ohos:height="150vp"
+        ohos:width="match_content"
+        ohos:image_src="$media:ame"/>
+
+    <Image
+        ohos:id="$+id:img_ame3"
+        ohos:height="150vp"
+        ohos:width="match_content"
+        ohos:image_src="$media:ame"/>
+</DirectionalLayout>

@@ -11,6 +11,18 @@
     {
       "name": "mainability_HelloWorld",
       "value": "Hello World"
+    },
+    {
+      "name": "entry_DiffAbility",
+      "value": "entry_DiffAbility"
+    },
+    {
+      "name": "diffability_description",
+      "value": "Java_Empty Ability"
+    },
+    {
+      "name": "diffability_HelloWorld",
+      "value": "Hello World"
     }
   ]
 }
