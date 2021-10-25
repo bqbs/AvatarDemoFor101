@@ -1,7 +1,7 @@
-package com.jclian.hmos.avatarfor101.slice;
+package com.github.bqbs.hmos.avatarfor101.slice;
 
-import com.jclian.hmos.avatarfor101.ResourceTable;
-import com.jclian.hmos.avatarfor101.utils.PixelMapUtils;
+import com.github.bqbs.hmos.avatarfor101.ResourceTable;
+import com.github.bqbs.hmos.avatarfor101.utils.PixelMapUtils;
 import ohos.aafwk.ability.AbilitySlice;
 import ohos.aafwk.content.Intent;
 import ohos.agp.components.Component;
@@ -13,15 +13,15 @@ import ohos.agp.utils.RectFloat;
 import ohos.global.configuration.DeviceCapability;
 import ohos.media.image.PixelMap;
 
-public class DiffAbilitySlice extends AbilitySlice {
+public class RadialShaderAbilitySlice extends AbilitySlice {
     @Override
     public void onStart(Intent intent) {
         super.onStart(intent);
-        super.setUIContent(ResourceTable.Layout_ability_diff);
+        super.setUIContent(ResourceTable.Layout_ability_different_shader);
 
-        Image image = (ohos.agp.components.Image) findComponentById(ResourceTable.Id_img_ame1);
-        Image image2 = (ohos.agp.components.Image) findComponentById(ResourceTable.Id_img_ame2);
-        Image image3 = (ohos.agp.components.Image) findComponentById(ResourceTable.Id_img_ame3);
+        Image image = (Image) findComponentById(ResourceTable.Id_img_ame1);
+        Image image2 = (Image) findComponentById(ResourceTable.Id_img_ame2);
+        Image image3 = (Image) findComponentById(ResourceTable.Id_img_ame3);
         image.addDrawTask(new MyDrawTask(Shader.TileMode.CLAMP_TILEMODE));
         image2.addDrawTask(new MyDrawTask(Shader.TileMode.MIRROR_TILEMODE));
         image3.addDrawTask(new MyDrawTask(Shader.TileMode.REPEAT_TILEMODE));
@@ -46,16 +46,30 @@ public class DiffAbilitySlice extends AbilitySlice {
 
         @Override
         public void onDraw(Component component, Canvas canvas) {
-             //渐变红背景
+            //渐变红背景
             RectFloat rect = new RectFloat(0f, 0f, component.getWidth(), component.getHeight());
             Paint paint = new Paint();
             paint.setGradientShaderColor(new Color[]{Color.RED, Color.TRANSPARENT});
             LinearShader linearShader = new LinearShader(
-                    new Point[]{new Point(0, 0), new Point(component.getWidth() /2, 0)}, // 为了演示TileMode的区别，这里高度修改成了0
+                    new Point[]{new Point(0, 0), new Point(component.getWidth() / 2f, 0)}, // 为了演示TileMode的区别，这里高度修改成了0
                     new float[]{0f, 1f},
                     new Color[]{Color.RED, Color.TRANSPARENT}, mTileMode // 为了演示TileMode的区别，这里修改成了变量
             );
-            paint.setShader(linearShader, Paint.ShaderType.LINEAR_SHADER);
+
+            SweepShader sweepShader = new SweepShader(component.getWidth() / 2f,
+                    component.getHeight() / 2f,
+                    new Color[]{Color.RED, Color.TRANSPARENT},
+                    new float[]{0f, 0.1f}
+            );
+
+            RadialShader radialShader = new RadialShader(
+                    new Point(component.getWidth() / 2f, component.getHeight() / 2f),
+                    component.getHeight(), new float[]{0f, 1f},
+                    new Color[]{Color.RED, Color.TRANSPARENT},
+                    mTileMode
+            );
+            GroupShader groupShader = new GroupShader(sweepShader, radialShader, BlendMode.DST_IN);
+            paint.setShader(groupShader, Paint.ShaderType.GROUP_SHADER);
             canvas.drawRect(rect, paint);
 
             // 绘制五星
@@ -69,8 +83,9 @@ public class DiffAbilitySlice extends AbilitySlice {
 
             // 指定图片在屏幕上显示的区域
             RectFloat dst = new RectFloat(0, 0,
-                    component.getWidth() * 2 / 3, component.getWidth() * 2 / 3 * imageHeight / imageWidth);
-            canvas.drawPixelMapHolderRect(new PixelMapHolder(pixelMaps), dst, paintImage);
+                    component.getWidth() * 2 / 3f,
+                    component.getWidth() * 2 / 3f * imageHeight / imageWidth);
+//            canvas.drawPixelMapHolderRect(new PixelMapHolder(pixelMaps), dst, paintImage);
             paint.reset();
             paint.setColor(new Color(Color.rgb(0xff, 0xff, 0xff)));
             paint.setAntiAlias(true);

@@ -1,4 +1,4 @@
-package com.jclian.hmos.avatarfor101;
+package com.github.bqbs.hmos.avatarfor101;
 
 import ohos.aafwk.ability.delegation.AbilityDelegatorRegistry;
 import org.junit.Test;
@@ -9,6 +9,6 @@ public class ExampleOhosTest {
     @Test
     public void testBundleName() {
         final String actualBundleName = AbilityDelegatorRegistry.getArguments().getTestBundleName();
-        assertEquals("com.jclian.hmos.avatarfor101", actualBundleName);
+        assertEquals("com.github.bqbs.hmos.avatarfor101", actualBundleName);
     }
 }

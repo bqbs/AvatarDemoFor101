@@ -1,4 +1,4 @@
-package com.jclian.hmos.avatarfor101.utils;
+package com.github.bqbs.hmos.avatarfor101.utils;
 
 import ohos.hiviewdfx.HiLog;
 import ohos.hiviewdfx.HiLogLabel;

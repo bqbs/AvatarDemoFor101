@@ -1,4 +1,4 @@
-package com.jclian.hmos.avatarfor101;
+package com.github.bqbs.hmos.avatarfor101;
 
 import ohos.aafwk.ability.AbilityPackage;
 

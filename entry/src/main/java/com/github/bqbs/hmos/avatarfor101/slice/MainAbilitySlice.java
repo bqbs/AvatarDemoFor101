@@ -1,7 +1,7 @@
-package com.jclian.hmos.avatarfor101.slice;
+package com.github.bqbs.hmos.avatarfor101.slice;
 
-import com.jclian.hmos.avatarfor101.ResourceTable;
-import com.jclian.hmos.avatarfor101.utils.PixelMapUtils;
+import com.github.bqbs.hmos.avatarfor101.ResourceTable;
+import com.github.bqbs.hmos.avatarfor101.utils.PixelMapUtils;
 import ohos.aafwk.ability.AbilitySlice;
 import ohos.aafwk.content.Intent;
 import ohos.agp.components.Component;
@@ -18,8 +18,10 @@ public class MainAbilitySlice extends AbilitySlice {
         super.onStart(intent);
         super.setUIContent(ResourceTable.Layout_ability_main);
         findComponentById(ResourceTable.Id_btn_more).setClickedListener(component -> {
-//                DiffAbility
             present(new DiffAbilitySlice(), new Intent());
+        });
+        findComponentById(ResourceTable.Id_btn_different_shader).setClickedListener(component -> {
+            present(new DifferentShaderAbilitySlice(), new Intent());
         });
 
         Image image = (ohos.agp.components.Image) findComponentById(ResourceTable.Id_img_avatar);
@@ -29,7 +31,7 @@ public class MainAbilitySlice extends AbilitySlice {
             RectFloat rect = new RectFloat(0f, 0f, component.getWidth(), component.getHeight());
             Paint paint = new Paint();
             LinearShader linearShader = new LinearShader(
-                    new Point[]{new Point(0, 0), new Point(component.getWidth() * 2 / 3, component.getHeight())},
+                    new Point[]{new Point(0, 0), new Point(component.getWidth() * 2 / 3f, component.getHeight())},
                     new float[]{0f, 1f},
                     new Color[]{Color.RED, Color.TRANSPARENT}, Shader.TileMode.CLAMP_TILEMODE
             );
@@ -46,7 +48,8 @@ public class MainAbilitySlice extends AbilitySlice {
             int imageHeight = pixelMaps.getImageInfo().size.height;
             // 指定图片在屏幕上显示的区域
             RectFloat dst = new RectFloat(0, 0,
-                    component.getWidth() * 2 / 3, component.getWidth() * 2 / 3 * imageHeight / imageWidth);
+                    component.getWidth() * 2 / 3f,
+                    component.getWidth() * 2 / 3f * imageHeight / imageWidth);
             canvas.drawPixelMapHolderRect(new PixelMapHolder(pixelMaps), dst, paintImage);
         });
 

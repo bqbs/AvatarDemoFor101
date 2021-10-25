@@ -1,7 +1,7 @@
 {
   "app": {
-    "bundleName": "com.jclian.hmos.avatarfor101",
-    "vendor": "jclian",
+    "bundleName": "com.github.bqbs.hmos.avatarfor101",
+    "vendor": "github.bqbs",
     "version": {
       "code": 1000000,
       "name": "1.0.0"
@@ -9,9 +9,9 @@
   },
   "deviceConfig": {},
   "module": {
-    "package": "com.jclian.hmos.avatarfor101",
+    "package": "com.github.bqbs.hmos.avatarfor101",
     "name": ".MyApplication",
-    "mainAbility": "com.jclian.hmos.avatarfor101.MainAbility",
+    "mainAbility": "com.github.bqbs.hmos.avatarfor101.MainAbility",
     "deviceType": [
       "phone",
       "tablet",
@@ -32,17 +32,27 @@
             ],
             "actions": [
               "action.system.home",
-              "action.ame"
+              "action.ame",
+              "action.mengma"
             ]
           }
         ],
-        "orientation": "unspecified",
-        "name": "com.jclian.hmos.avatarfor101.MainAbility",
+        "orientation": "portrait",
+        "name": "com.github.bqbs.hmos.avatarfor101.MainAbility",
         "icon": "$media:icon",
         "description": "$string:mainability_description",
         "label": "$string:entry_MainAbility",
         "type": "page",
-        "launchType": "standard"
+        "launchType": "standard",
+        "metaData": {
+          "customizeData": [
+            {
+              "name": "hwc-theme",
+              "value": "androidhwext:style/Theme.Emui.NoTitleBar",
+              "extra": ""
+            }
+          ]
+        }
       }
     ]
   }
