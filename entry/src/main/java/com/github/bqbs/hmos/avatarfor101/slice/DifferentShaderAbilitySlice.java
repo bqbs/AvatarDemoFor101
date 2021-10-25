@@ -49,6 +49,7 @@ public class DifferentShaderAbilitySlice extends AbilitySlice {
                 addDrawTask(tileMode);
             }
         });
+        radioContainer.mark(0);
         addDrawTask(Shader.TileMode.CLAMP_TILEMODE);
     }
 
@@ -89,22 +90,23 @@ public class DifferentShaderAbilitySlice extends AbilitySlice {
             RectFloat rect = new RectFloat(0f, 0f, component.getWidth(), component.getHeight());
             Paint paint = new Paint();
             paint.setGradientShaderColor(new Color[]{Color.RED, Color.TRANSPARENT});
+            // 线性
             LinearShader linearShader = new LinearShader(
                     new Point[]{new Point(0, 0), new Point(component.getWidth() / 2f, 0)}, // 为了演示TileMode的区别，这里高度修改成了0
                     new float[]{0f, 1f},
                     new Color[]{Color.RED, Color.TRANSPARENT}, mTileMode // 为了演示TileMode的区别，这里修改成了变量
             );
-
+            // 扫描
             SweepShader sweepShader = new SweepShader(component.getWidth() / 2f,
                     component.getHeight() / 2f,
                     new Color[]{Color.RED, Color.TRANSPARENT},
-                    new float[]{0f, 0.1f}
+                    new float[]{0f, 1f}
             );
-
+            // 径向
             RadialShader radialShader = new RadialShader(
                     new Point(component.getWidth() / 2f, component.getHeight() / 2f),
                     component.getHeight() / 2f, new float[]{0f, 1f},
-                    new Color[]{Color.RED, Color.TRANSPARENT},
+                    new Color[]{new Color(Color.rgb(0xFF,0xFF,0x01)), Color.TRANSPARENT},
                     mTileMode
             );
             GroupShader groupShader = new GroupShader(sweepShader, radialShader, BlendMode.DST_IN);

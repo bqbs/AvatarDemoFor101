@@ -37,7 +37,7 @@
             ]
           }
         ],
-        "orientation": "portrait",
+        "orientation": "unspecified",
         "name": "com.github.bqbs.hmos.avatarfor101.MainAbility",
         "icon": "$media:icon",
         "description": "$string:mainability_description",
