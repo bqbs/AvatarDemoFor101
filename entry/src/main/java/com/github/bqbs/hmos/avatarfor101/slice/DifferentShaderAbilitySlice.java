@@ -106,9 +106,10 @@ public class DifferentShaderAbilitySlice extends AbilitySlice {
             RadialShader radialShader = new RadialShader(
                     new Point(component.getWidth() / 2f, component.getHeight() / 2f),
                     component.getHeight() / 2f, new float[]{0f, 1f},
-                    new Color[]{new Color(Color.rgb(0xFF,0xFF,0x01)), Color.TRANSPARENT},
+                    new Color[]{new Color(Color.rgb(0xFF, 0xFF, 0x01)), Color.TRANSPARENT},
                     mTileMode
             );
+            // 组合
             GroupShader groupShader = new GroupShader(sweepShader, radialShader, BlendMode.DST_IN);
             Paint paintImage = new Paint();
             paintImage.setAntiAlias(true);

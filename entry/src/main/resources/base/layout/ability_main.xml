@@ -29,7 +29,9 @@
         ohos:id="$+id:btn_more"
         ohos:height="match_content"
         ohos:width="match_parent"
+        ohos:background_element="$graphic:background_btn"
         ohos:clickable="true"
+
         ohos:text="Different TileMode"
         ohos:text_size="30vp"/>
 
@@ -38,8 +40,18 @@
         ohos:id="$+id:btn_different_shader"
         ohos:height="match_content"
         ohos:width="match_parent"
+        ohos:background_element="$graphic:background_btn"
         ohos:clickable="true"
         ohos:text="Different Shader"
+        ohos:text_size="30vp"/>
+
+    <Button
+        ohos:id="$+id:btn_points_colors"
+        ohos:height="match_content"
+        ohos:width="match_parent"
+        ohos:visibility="hide"
+        ohos:background_element="$graphic:background_btn"
+        ohos:text="Points and colors"
         ohos:text_size="30vp"/>
 
 </DirectionalLayout>
